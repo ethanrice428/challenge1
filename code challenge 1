@@ -1,0 +1,25 @@
+// code challenge 1
+int lmotor= 0;
+int rmotor= 2;
+int fullspeed= 100;
+int halfspeed= 50;
+int rightbump= 9;
+int leftbump= 8;
+
+int main()
+{
+	while (digital(rightbump) == 0)
+	{
+	motor (lmotor,fullspeed);
+	motor (rmotor,fullspeed);
+	}
+	while (digital(leftbump) == 0)
+	{
+		motor (rmotor, 0);
+		motor (lmotor, halfspeed);
+	}
+	
+	ao();
+	
+	return 0;
+}
