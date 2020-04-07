@@ -8,18 +8,18 @@ int leftbump= 8;
 
 int main()
 {
-	while (digital(rightbump) == 0)
+	while (digital(rightbump) == 0) // while right sensor is not activated, go straight
 	{
 	motor (lmotor,fullspeed);
 	motor (rmotor,fullspeed);
 	}
-	while (digital(leftbump) == 0)
+	while (digital(leftbump) == 0) // after rightbump is hit, turn right until leftbump is hit
 	{
 		motor (rmotor, 0);
 		motor (lmotor, halfspeed);
 	}
 	
-	ao();
+	ao(); // stop everything
 	
 	return 0;
 }
