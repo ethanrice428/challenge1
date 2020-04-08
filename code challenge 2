@@ -1,0 +1,28 @@
+int lmotor= 0;
+int rmotor= 2;
+int fullspeed= 100;
+int halfspeed= 50;
+int rightbump= 9;
+int leftbump= 8;
+int mid_distance= 1;
+int main()
+{
+	motor (rmotor, fullspeed);// straighten out robot
+	motor (lmotor, fullspeed);
+	msleep(500);
+	motor (rmotor, halfspeed);
+	motor (lmotor, fullspeed);
+	msleep(1000);
+	while (digital(leftbump)==0) //go straight until bump sensor touches wall
+	{
+	motor (lmotor,fullspeed);
+	motor (rmotor, fullspeed);
+	}
+	motor (lmotor,-halfspeed);// back up a bit and turn to face the right of board
+	motor (rmotor,-halfspeed);
+	msleep(500);
+	motor (lmotor,0);
+	motor (rmotor,halfspeed);
+	msleep(1700);
+	return 0;
+}
