@@ -1,0 +1,42 @@
+int lmotor= 0;
+int rmotor= 2;
+int fullspeed= 100;
+int halfspeed= 50;
+int rightbump= 9;
+int leftbump= 8;
+int r_reflect= 6;
+int main()
+{
+	motor (rmotor, fullspeed);// straighten out robot
+	motor (lmotor, fullspeed);
+	msleep(500);
+	motor (rmotor, halfspeed);
+	motor (lmotor, fullspeed);
+	msleep(1000);
+	while (digital(leftbump)==0) //go straight until bump sensor touches wall
+	{
+	motor (lmotor,fullspeed);
+	motor (rmotor, fullspeed);
+	}
+	motor (lmotor,-halfspeed);// back up a bit and turn to face the right of board
+	motor (rmotor,-halfspeed);
+	msleep(500);
+	motor (lmotor,0);
+	motor (rmotor,halfspeed);
+	msleep(2000);
+	
+	while (digital(leftbump)==0) // while front sensor is not activated, look for light
+	{
+		if (analog(r_reflect) <500) // if right relfect is less than 500, turn left
+		{
+			motor (lmotor, 32);
+			motor (rmotor, fullspeed);
+		}
+		else
+		{
+			motor (lmotor,fullspeed); //if right reflect is greater than 500, turn right
+			motor (rmotor, 10);
+		}
+	}
+	return 0;
+}
