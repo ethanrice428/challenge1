@@ -1,0 +1,31 @@
+int lmotor= 0;
+int rmotor= 2;
+int fullspeed= 100;
+int halfspeed= 50;
+int rightbump= 9;
+int leftbump= 8;
+int mid_distance= 1;
+int r_reflect= 6;
+int rdistance= 2;
+int ldistance = 0;
+int main()
+{
+	shut_down_in (52);
+	while (digital(leftbump)==0)// when left bumper is not activated, follow wall
+	{
+		if (analog(rdistance)<320)
+		{
+			motor (lmotor, 20);
+			motor (rmotor, fullspeed);
+			
+		}
+		else
+		{
+			motor (lmotor, fullspeed);
+			motor (rmotor, 10);
+		}
+	}
+
+
+	return 0;
+}
