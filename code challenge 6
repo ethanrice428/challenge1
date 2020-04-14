@@ -1,0 +1,27 @@
+int lmotor= 0;
+int rmotor= 2;
+int fullspeed= 100;
+int halfspeed= 50;
+int rightbump= 9;
+int leftbump= 8;
+int mid_distance= 1;
+int r_reflect= 6;
+int rdistance= 2;
+int ldistance = 0;
+int main()
+{
+	int ethan;
+	for(ethan=1;ethan<=6;ethan++){
+		printf("back and forth %d \n", ethan);// go forward and backward for 2.5 seconds 6 times, and print back and forth each time
+		motor (lmotor, fullspeed);
+		motor (rmotor, fullspeed);
+		msleep(2500);
+		motor (lmotor, -fullspeed);
+		motor (rmotor, -fullspeed);
+		msleep(2500);
+	
+	}
+	
+
+	return 0;
+}
